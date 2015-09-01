@@ -1,32 +1,109 @@
- <?php
+<?php
 include "class.ahoroscope.php";
-print "<html><head></head><body>\n";
-print "<table border='1' ><tr><td colspan='2' align='center'>\n";
-print "<h2>Get Your Horoscope For Today, ".date('l j F Y')."</h2>\n";
-print "</td></tr><tr><td width='250'>\n";
-print "<br><a href='$PHP_SELF?s=capricorn'>Capricorn (Dec 22 - Jan 19)</a>\n";
-print "<br><a href='$PHP_SELF?s=aquarius'>Aquarius (Jan 21 - Feb 18)</a>\n";
-print "<br><a href='$PHP_SELF?s=pisces'>Pisces (Feb 19 - Mar 20)</a>\n";
-print "<br><a href='$PHP_SELF?s=aries'>Aries (Mar 21 - Apr 19)</a>\n";
-print "<br><a href='$PHP_SELF?s=taurus'>Taurus (Apr 20 - May 20)</a>\n";
-print "<br><a href='$PHP_SELF?s=gemini'>Gemini (May 21 - June 21)</a>\n";
-print "<br><a href='$PHP_SELF?s=cancer'>Cancer (June 22 - July 22)</a>\n";
-print "<br><a href='$PHP_SELF?s=leo'>Leo (July 23 - Aug 22)</a>\n";
-print "<br><a href='$PHP_SELF?s=virgo'>Virgo (Aug 23 - Sept 22)</a>\n";
-print "<br><a href='$PHP_SELF?s=libra'>Libra (Sept 23 - Oct 22)</a>\n";
-print "<br><a href='$PHP_SELF?s=scorpio'>Scorpio (Oct 23 - Nov 21)</a>\n";
-print "<br><a href='$PHP_SELF?s=sagittarius'>Sagittarius (Nov 22 - Dec 21)</a>\n";
-print "</td><td width=450' align='center'>\n";
-if($sign=$_GET['s']){
-$hs=new ahoroscope();
-$h=$hs->getHoroscope($sign);
-print "<b>Horoscope for $sign:</b><br>$h";
-}else{
- print "This is an example script of how to use the ahoroscope class. Just\n";
- print " click on one of the links to get your horoscope for today from \n";
- print " the <b>http://www.astrology.com/</b> website.";
+$sign=$_GET['s'];
+$type=$_GET['type'];
+if($sign&&$type){
+	$hs=new ahoroscope();
+	switch($type){
+		case "daily":
+		//echo "1";
+		$h=$hs->getHoroscope_daily($sign);
+		break;
+		
+		case "yesterday":
+		//echo "1";
+		$h=$hs->getHoroscope_yesterday($sign);
+		break;
+		
+		case "single":
+		//echo "2";
+		$h=$hs->getHoroscope_single($sign);
+		break;
+		case "couple":
+		//echo "3";
+		$h=$hs->getHoroscope_couple($sign);
+		break;
+		case "monthly":
+		//echo "3";
+		$h=$hs->getHoroscope_monthly($sign);
+		break;
+		case "romance":
+		//echo "3";
+		$h=$hs->getHoroscope_romance($sign);
+		break;
+		case "wromance":
+		//echo "3";
+		$h=$hs->getHoroscope_wromance($sign);
+		break;
+		case "career":
+		//echo "3";
+		$h=$hs->getHoroscope_career($sign);
+		break;
+		case "fitness":
+		//echo "3";
+		$h=$hs->getHoroscope_fitness($sign);
+		break;
+		case "teen":
+		//echo "3";
+		$h=$hs->getHoroscope_teen($sign);
+		break;
+		case "tech":
+		//echo "3";
+		$h=$hs->getHoroscope_tech($sign);
+		break;
+		case "flirt":
+		//echo "3";
+		$h=$hs->getHoroscope_flirt($sign);
+		break;
+		case "beauty":
+		//echo "3";
+		$h=$hs->getHoroscope_beauty($sign);
+		break;
+		case "slam":
+		//echo "3";
+		$h=$hs->getHoroscope_slam($sign);
+		break;
+		case "baby":
+		//echo "3";
+		$h=$hs->getHoroscope_baby($sign);
+		break;
+		case "cat":
+		//echo "3";
+		$h=$hs->getHoroscope_cat($sign);
+		break;
+		case "dog":
+		//echo "3";
+		$h=$hs->getHoroscope_dog($sign);
+		break;
+		case "h_g":
+		//echo "3";
+		$h=$hs->getHoroscope_h_g($sign);
+		break;
+		case "weekly":
+		//echo "3";
+		$h=$hs->getHoroscope_weekly($sign);
+		break;
+		case "bus":
+		//echo "3";
+		$h=$hs->getHoroscope_bus($sign);
+		break;
+		case "travel":
+		//echo "3";
+		$h=$hs->getHoroscope_travel($sign);
+		break;
+		case "wflirt":
+		//echo "3";
+		$h=$hs->getHoroscope_wflirt($sign);
+		break;
+		case "year":
+		//echo "3";
+		$h=$hs->getHoroscope_year($sign);
+		break;
+	}
+	$h1 = wordwrap($h, 50, "<br />\n");
+	print "<b>Horoscope for ".ucfirst(strtolower($sign)).":</b><br>$h";
+	
+//	<div class='date'><a href='index.php?type=yesterday&sign=".$sign."'>Yesterday</a> - <a href=''>Today</a> - <a href=''>Tomorrow</a></div>$h";
+	//$h1";
 }
-
-print "</td></tr></table>\n";
-print "</body></html>\n";
-?> 
+?>
