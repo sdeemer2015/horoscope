@@ -78,21 +78,6 @@ class ahoroscope
 	
 	
 	
-	function getHoroscope_teen($sign)
-	{
-		$lnk="http://astrology.horoscope.com/free-weekly-teen-horoscope-".$sign.".html";
-		$pg=file_get_contents($lnk);
-		if(strpos($pg,'id="textline"')!==false)
-		{
-			$ii=strpos($pg,'id="textline"')+14;
-			$ij=strpos($pg,'</div',$ii);
-			$hor=substr($pg,$ii,$ij-$ii);
-		}else{
-			$hor="Not found";
-		}
-		return $hor;
-	}
-	
 	
 	function getHoroscope_romance($sign)
 	{
@@ -116,22 +101,8 @@ class ahoroscope
 	
 	
 	
+
 	
-	function getHoroscope_single($sign)
-	{
-		$lnk="http://horoscopes.astrology.com/dailysingles".$sign.".html";
-		//echo $lnk;
-		$pg=file_get_contents($lnk);
-		if(strpos($pg,"textline")!==false)
-		{
-			$ii=strpos($pg,"textline")+14;
-			$ij=strpos($pg,'<',$ii);
-			$hor=substr($pg,$ii,$ij-$ii);
-		}else{
-			$hor="Not found";
-		}
-		return $hor;
-	}
 	function getHoroscope_couple($sign)
 	{
 		$lnk="http://horoscopes.astrology.com/dailyrom".$sign.".html";
@@ -148,20 +119,6 @@ class ahoroscope
 	}
 	
 	
-	function getHoroscope_wromance($sign)
-	{
-		$lnk="http://horoscopes.astrology.com/weeklyrom".$sign.".html";
-		$pg=file_get_contents($lnk);
-		if(strpos($pg,'id="textline"')!==false)
-		{
-			$ii=strpos($pg,'id="textline"')+14;
-			$ij=strpos($pg,'<',$ii);
-			$hor=substr($pg,$ii,$ij-$ii);
-		}else{
-			$hor="Not found";
-		}
-		return $hor;
-	}
 	function getHoroscope_career($sign)
 	{
 		$lnk="http://horoscopes.astrology.com/monthlycar".$sign.".html";
@@ -176,21 +133,7 @@ class ahoroscope
 		}
 		return $hor;
 	}
-	function getHoroscope_fitness($sign)
-	{
-		$lnk="http://horoscopes.astrology.com/monthlyfit".$sign.".html";
-		$pg=file_get_contents($lnk);
-		if(strpos($pg,'id="textline"')!==false)
-		{
-			$ii=strpos($pg,'id="textline"')+14;
-			$ij=strpos($pg,'<',$ii);
-			$hor=substr($pg,$ii,$ij-$ii);
-		}else{
-			$hor="Not found";
-		}
-		return $hor;
-	}
-	
+
 	function getHoroscope_tech($sign)
 	{
 		$lnk="http://horoscopes.astrology.com/dailytech".$sign.".html";
